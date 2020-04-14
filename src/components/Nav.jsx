@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import * as api from '../utils/api';
+
 import Topics from './Topics';
 
 class Nav extends Component {
@@ -7,11 +9,18 @@ class Nav extends Component {
   render() {
     return (
       <nav>
-        <Topics />
+        <Topics topics={this.state.topics} />
         <p>sort</p>
       </nav>
     );
   }
+
+  componentDidMount = () => {
+    console.log('NAV mounted');
+    api.getTopics().then((topics) => {
+      this.setState({ topics });
+    });
+  };
 }
 
 export default Nav;

@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
 import Loading from './Loading';
 import * as api from '../utils/api';
+import ArticleListCard from './ArticleListCard';
 
 class ArticlesList extends Component {
   state = { articles: [], isLoading: true };
 
   render() {
+    const { topic } = this.props;
     const { articles, isLoading } = this.state;
+
     if (isLoading) return <Loading />;
+
     return (
       <article className="ArticlesList">
         <ul>
-          {articles.map(({ title, article_id }) => {
-            return <li key={article_id}>{title}</li>;
+          {articles.map((article) => {
+            return (
+              <ArticleListCard article={article} key={article.article_id} />
+            );
           })}
         </ul>
       </article>
     );
   }
 
-  componentDidMount = () => {
-    api.getArticles().then((articles) => {
+  componentDidMount = (topic) => {
+    api.getArticles(topic).then((articles) => {
       this.setState({ articles, isLoading: false });
     });
+  };
+
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.topic !== this.props.topic) {
+      this.setState({ isLoading: true });
+      api
+        .getArticles(this.props.topic)
+        .then((articles) => {
+          this.setState({ articles, isLoading: false });
+        })
+        .catch(console.log);
+    }
   };
 }
 

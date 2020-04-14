@@ -2,11 +2,11 @@ import React from 'react';
 import Nav from './Nav';
 import ArticlesList from './ArticlesList';
 
-const Articles = () => {
+const Articles = ({ topic_slug }) => {
   return (
     <section className="Articles">
       <Nav />
-      <ArticlesList />
+      <ArticlesList topic={topic_slug} />
     </section>
   );
 };
