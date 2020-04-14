@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { navigate, Link } from '@reach/router';
-import * as api from '../utils/api';
+import { Link } from '@reach/router';
+// import * as api from '../utils/api';
 
 class Topics extends Component {
   state = { topics: [] };
 
   render() {
-    const { selectedTopic } = this.state;
+    // const { selectedTopic } = this.state;
     const { topics } = this.props;
     return (
       <ul>

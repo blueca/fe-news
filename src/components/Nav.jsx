@@ -16,7 +16,6 @@ class Nav extends Component {
   }
 
   componentDidMount = () => {
-    console.log('NAV mounted');
     api.getTopics().then((topics) => {
       this.setState({ topics });
     });

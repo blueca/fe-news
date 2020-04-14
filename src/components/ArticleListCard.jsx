@@ -10,6 +10,7 @@ const ArticleListCard = (props) => {
           {article.title}
         </Link>
       </p>
+      <p>{article.votes} votes</p>
       <p>Posted at {article.created_at}</p>
       <p>by {article.author}</p>
       <p>to {article.topic}</p>

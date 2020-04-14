@@ -5,7 +5,6 @@ const request = axios.create({
 });
 
 export const getArticles = async (topic) => {
-  console.log(topic);
   if (topic === 'all') {
     const { data } = await request.get('/articles');
     return data.articles;
@@ -13,6 +12,11 @@ export const getArticles = async (topic) => {
     const { data } = await request.get('/articles', { params: { topic } });
     return data.articles;
   }
+};
+
+export const getSingleArticle = async (article_id) => {
+  const { data } = await request.get(`articles/${article_id}`);
+  return data.article;
 };
 
 export const getTopics = async () => {

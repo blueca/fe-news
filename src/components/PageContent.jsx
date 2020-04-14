@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Redirect } from '@reach/router';
 import Articles from './Articles';
-import ArticleContent from './ArticleContent';
+// import ArticleContent from './ArticleContent';
 
 const PageContent = () => {
   return (
@@ -9,7 +9,7 @@ const PageContent = () => {
       <Router>
         <Redirect from="/" to="/topics/all" noThrow />
         {/* <Articles path="/" /> */}
-        <Articles path="/topics/:topic_slug" />
+        <Articles path="/topics/:topic_slug/*" />
         {/* <ArticleContent path="/:topic_slug/:article_id" /> */}
       </Router>
     </section>

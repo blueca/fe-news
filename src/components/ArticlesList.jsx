@@ -7,7 +7,6 @@ class ArticlesList extends Component {
   state = { articles: [], isLoading: true };
 
   render() {
-    const { topic } = this.props;
     const { articles, isLoading } = this.state;
 
     if (isLoading) return <Loading />;
