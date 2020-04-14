@@ -1,0 +1,19 @@
+header {
+  border: 2px solid red;
+}
+
+.MainSection {
+  border: 2px solid blue;
+}
+
+.Articles {
+  border: 2px solid brown;
+}
+
+nav {
+  border: 2px solid green;
+}
+
+.ArticlesList {
+  border: 2px solid yellow;
+}
