@@ -1,39 +1,28 @@
-import React, { Component } from 'react';
-import * as api from '../utils/api';
+import React from 'react';
 
-class SingleArticle extends Component {
-  state = { article: {} };
+const SingleArticle = (props) => {
+  const {
+    title,
+    author,
+    created_at,
+    body,
+    comment_count,
+    topic,
+    votes,
+  } = props.article;
+  return (
+    <div>
+      <p>{votes} votes</p>
 
-  render() {
-    const {
-      title,
-      author,
-      created_at,
-      body,
-      comment_count,
-      topic,
-      votes,
-    } = this.state.article;
-    return (
-      <div>
-        <p>{votes} votes</p>
+      <p>{title}</p>
+      <p>{topic}</p>
 
-        <p>{title}</p>
-        <p>{topic}</p>
-
-        <p>submitted at {created_at}</p>
-        <p>by {author}</p>
-        <p>{body}</p>
-        <p>{comment_count} comments</p>
-      </div>
-    );
-  }
-
-  componentDidMount = () => {
-    api.getSingleArticle(this.props.article_id).then((article) => {
-      this.setState({ article });
-    });
-  };
-}
+      <p>submitted at {created_at}</p>
+      <p>by {author}</p>
+      <p>{body}</p>
+      <p>{comment_count} comments</p>
+    </div>
+  );
+};
 
 export default SingleArticle;

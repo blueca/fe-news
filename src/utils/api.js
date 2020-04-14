@@ -15,8 +15,9 @@ export const getArticles = async (topic) => {
 };
 
 export const getSingleArticle = async (article_id) => {
-  const { data } = await request.get(`articles/${article_id}`);
-  return data.article;
+  const article = await request.get(`articles/${article_id}`);
+  const comments = await request.get(`articles/${article_id}/comments`);
+  return { article: article.data.article, comments: comments.data.comments };
 };
 
 export const getTopics = async () => {
