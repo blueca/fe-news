@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import CommentCard from './CommentCard';
 
 const ArticleComments = (props) => {
-  console.log(props.comments);
   return (
     <div>
       <ul>

@@ -24,8 +24,8 @@ class ArticlesList extends Component {
     );
   }
 
-  componentDidMount = (topic) => {
-    api.getArticles(topic).then((articles) => {
+  componentDidMount = () => {
+    api.getArticles(this.props.topic).then((articles) => {
       this.setState({ articles, isLoading: false });
     });
   };
