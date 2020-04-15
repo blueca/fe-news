@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import SingleArticle from './SingleArticle';
 import ArticleComments from './ArticleComments';
 import * as api from '../utils/api';
 import NewComment from './NewComment';
+
+const StyledDiv = styled.div`
+  padding: 0 2rem;
+`;
 
 class ArticlePage extends Component {
   state = { article: {}, comments: [], newComment: '' };
 
   render() {
     return (
-      <div>
+      <StyledDiv>
         <SingleArticle
           article={this.state.article}
-          commentCount={this.state.comments.length}
+          // commentCount={this.state.comments.length}
         />
         <NewComment
           handlePost={this.handlePost}
@@ -24,7 +29,7 @@ class ArticlePage extends Component {
           user={this.props.user}
           handleDelete={this.handleDelete}
         />
-      </div>
+      </StyledDiv>
     );
   }
 

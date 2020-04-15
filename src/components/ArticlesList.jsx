@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Loading from './Loading';
 import * as api from '../utils/api';
 import ArticleListCard from './ArticleListCard';
+
+const Ol = styled.ol`
+  list-style-type: upper-roman;
+  padding-right: 2rem;
+`;
 
 class ArticlesList extends Component {
   state = { articles: [], isLoading: true };
@@ -13,13 +19,13 @@ class ArticlesList extends Component {
 
     return (
       <article className="ArticlesList">
-        <ul>
+        <Ol>
           {articles.map((article) => {
             return (
               <ArticleListCard article={article} key={article.article_id} />
             );
           })}
-        </ul>
+        </Ol>
       </article>
     );
   }

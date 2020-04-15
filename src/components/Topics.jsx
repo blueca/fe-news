@@ -7,21 +7,8 @@ class Topics extends Component {
 
   render() {
     const { selectedTopic, topics } = this.state;
-    // const { topics } = this.props;
-    return (
-      // <ul>
-      //   <li>
-      //     <Link to="/">all</Link>
-      //   </li>
-      //   {topics.map(({ slug }) => {
-      //     return (
-      //       <li value={slug.toLowerCase()} key={slug}>
-      //         <Link to={`/topics/${slug}`}>{slug}</Link>
-      //       </li>
-      //     );
-      //   })}
-      // </ul>
 
+    return (
       <label>
         View Topic:
         <select onChange={this.handleChange} value={selectedTopic}>
@@ -47,11 +34,8 @@ class Topics extends Component {
   handleChange = (event) => {
     const { value } = event.target;
     this.setState({ selectedTopic: value });
-    // if (value === 'all') {
-    //   navigate('/');
-    // } else {
+
     navigate(`/topics/${value}`);
-    // }
   };
 }
 

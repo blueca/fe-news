@@ -1,14 +1,41 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from '@reach/router';
+
+const H = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 2px solid red; */
+`;
+
+const HeaderLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+  padding-left: 2rem;
+
+  &:visited {
+    color: black;
+  }
+`;
+
+const P = styled.p`
+  align-self: flex-start;
+  margin: 0 1rem;
+  padding: 0.5rem;
+  background-color: red;
+  border-radius: 0 0 0.5rem 0.5rem;
+  margin-right: 2rem;
+`;
 
 const Header = ({ user }) => {
   return (
-    <header>
-      <Link to="/">
+    <H>
+      <HeaderLink to="/">
         <h1>NC-NEWS</h1>
-      </Link>
-      <p>User: {user}</p>
-    </header>
+      </HeaderLink>
+      <P>User: {user}</P>
+    </H>
   );
 };
 

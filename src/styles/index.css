@@ -1,8 +1,12 @@
-header {
-  border: 2px solid red;
+html {
+  font-family: 'Roboto', sans-serif;
 }
 
-.MainSection {
+body {
+  margin: 0;
+}
+
+/* .MainSection {
   border: 2px solid blue;
 }
 
@@ -24,4 +28,4 @@ nav {
 
 .CommentCard {
   border: 2px solid red;
-}
+} */

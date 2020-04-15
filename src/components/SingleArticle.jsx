@@ -10,9 +10,10 @@ const SingleArticle = (props) => {
     topic,
     votes,
     article_id,
+    comment_count,
   } = props.article;
   return (
-    <div>
+    <article>
       <VoteChanger votes={votes} id={article_id} votee="articles" />
 
       <p>{title}</p>
@@ -21,8 +22,8 @@ const SingleArticle = (props) => {
       <p>submitted at {created_at}</p>
       <p>by {author}</p>
       <p>{body}</p>
-      <p>{props.commentCount} comments</p>
-    </div>
+      <p>{comment_count} comments</p>
+    </article>
   );
 };
 

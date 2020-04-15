@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import * as api from '../utils/api';
+
+const Voting = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+`;
+
+const VoteButton = styled.button`
+  width: 2rem;
+`;
 
 class VoteChanger extends Component {
   state = {
@@ -10,8 +24,8 @@ class VoteChanger extends Component {
     const { voteChange } = this.state;
 
     return (
-      <section>
-        <button
+      <Voting>
+        <VoteButton
           onClick={() => {
             if (voteChange === 0) {
               this.handleVote(1);
@@ -23,9 +37,9 @@ class VoteChanger extends Component {
           }}
         >
           +
-        </button>
+        </VoteButton>
         {this.props.votes + this.state.voteChange}
-        <button
+        <VoteButton
           onClick={() => {
             if (voteChange === 0) {
               this.handleVote(-1);
@@ -37,8 +51,8 @@ class VoteChanger extends Component {
           }}
         >
           -
-        </button>
-      </section>
+        </VoteButton>
+      </Voting>
     );
   }
 

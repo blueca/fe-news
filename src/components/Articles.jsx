@@ -5,7 +5,7 @@ import ArticlePage from './ArticlePage';
 
 const Articles = ({ topic_slug, user }) => {
   return (
-    <section className="Articles">
+    <section>
       <Router>
         <ArticlesDisplay path="/" topic={topic_slug} user={user} />
         <ArticlePage path="/:article_id" user={user} />

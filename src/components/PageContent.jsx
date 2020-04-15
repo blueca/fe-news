@@ -5,7 +5,7 @@ import Articles from './Articles';
 
 const PageContent = ({ user }) => {
   return (
-    <section className="MainSection">
+    <section>
       <Router>
         <Redirect from="/" to="/topics/all" noThrow />
         {/* <Articles path="/" /> */}
