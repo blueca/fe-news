@@ -10,13 +10,20 @@ class ArticlePage extends Component {
   render() {
     return (
       <div>
-        <SingleArticle article={this.state.article} />
+        <SingleArticle
+          article={this.state.article}
+          commentCount={this.state.comments.length}
+        />
         <NewComment
           handlePost={this.handlePost}
           handleChange={this.handleChange}
           newComment={this.state.newComment}
         />
-        <ArticleComments comments={this.state.comments} />
+        <ArticleComments
+          comments={this.state.comments}
+          user={this.props.user}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
@@ -35,23 +42,36 @@ class ArticlePage extends Component {
     const { user, article_id } = this.props;
     const comment = { username: user, body: value };
 
-    api.postComment(article_id, comment).catch(console.log);
+    if (value.length > 0) {
+      api.postComment(article_id, comment).catch(console.log);
 
-    this.setState((currentState) => {
-      const userViewComment = {};
-      userViewComment.votes = 0;
-      userViewComment.author = user;
-      userViewComment.created_at = new Date().toISOString();
-      userViewComment.body = value;
-      userViewComment.comment_id = `optimisticComment${currentState.comments.length}`;
-      const updateComments = [userViewComment, ...currentState.comments];
-      return { comments: updateComments, newComment: '' };
-    });
+      this.setState((currentState) => {
+        const userViewComment = {};
+        userViewComment.votes = 0;
+        userViewComment.author = user;
+        userViewComment.created_at = new Date().toISOString();
+        userViewComment.body = value;
+        userViewComment.comment_id = `optimisticComment${currentState.comments.length}`;
+        const updateComments = [userViewComment, ...currentState.comments];
+        return { comments: updateComments, newComment: '' };
+      });
+    }
   };
 
   handleChange = (event) => {
     const { value } = event.target;
     this.setState({ newComment: value });
+  };
+
+  handleDelete = (comment_id) => {
+    this.setState((currentState) => {
+      const updatedComments = currentState.comments.filter((comment) => {
+        return comment.comment_id !== comment_id;
+      });
+      return { comments: updatedComments };
+    });
+
+    api.deleteComment(comment_id);
   };
 }
 

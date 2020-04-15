@@ -6,7 +6,14 @@ const ArticleComments = (props) => {
     <div>
       <ul>
         {props.comments.map((comment) => {
-          return <CommentCard comment={comment} key={comment.comment_id} />;
+          return (
+            <CommentCard
+              comment={comment}
+              key={comment.comment_id}
+              user={props.user}
+              handleDelete={props.handleDelete}
+            />
+          );
         })}
       </ul>
     </div>

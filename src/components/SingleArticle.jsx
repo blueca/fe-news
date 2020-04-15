@@ -20,7 +20,7 @@ const SingleArticle = (props) => {
       <p>submitted at {created_at}</p>
       <p>by {author}</p>
       <p>{body}</p>
-      <p>{comment_count} comments</p>
+      <p>{props.commentCount} comments</p>
     </div>
   );
 };

@@ -21,3 +21,7 @@ nav {
 .ArticleListCard {
   border: 2px solid red;
 }
+
+.CommentCard {
+  border: 2px solid red;
+}

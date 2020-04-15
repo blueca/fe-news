@@ -38,3 +38,7 @@ export const postComment = async (article_id, comment) => {
 
   return status;
 };
+
+export const deleteComment = async (comment_id) => {
+  await request.delete(`/comments/${comment_id}`);
+};
