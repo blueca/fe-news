@@ -1,4 +1,5 @@
 import React from 'react';
+import VoteChanger from './VoteChanger';
 
 const SingleArticle = (props) => {
   const {
@@ -9,10 +10,11 @@ const SingleArticle = (props) => {
     comment_count,
     topic,
     votes,
+    article_id,
   } = props.article;
   return (
     <div>
-      <p>{votes} votes</p>
+      <VoteChanger votes={votes} id={article_id} votee="articles" />
 
       <p>{title}</p>
       <p>{topic}</p>

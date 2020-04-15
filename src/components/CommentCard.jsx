@@ -6,7 +6,8 @@ const CommentCard = (props) => {
     <li className="CommentCard">
       <VoteChanger
         votes={props.comment.votes}
-        comment_id={props.comment.comment_id}
+        id={props.comment.comment_id}
+        votee="comments"
       />
       <p>{props.comment.author}</p>
       <p>{props.comment.created_at}</p>

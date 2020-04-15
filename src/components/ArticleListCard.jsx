@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import VoteChanger from './VoteChanger';
 
 const ArticleListCard = (props) => {
   const { article } = props;
   return (
     <div className="ArticleListCard">
+      <VoteChanger
+        votes={article.votes}
+        id={article.article_id}
+        votee="articles"
+      />
       <p>
         <Link to={`/topics/${article.topic}/${article.article_id}`}>
           {article.title}
