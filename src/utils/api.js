@@ -31,14 +31,22 @@ export const getTopics = async () => {
 };
 
 export const postComment = async (article_id, comment) => {
-  const { status } = await request.post(
+  const { data } = await request.post(
     `/articles/${article_id}/comments`,
     comment
   );
 
-  return status;
+  return data.comment;
 };
 
 export const deleteComment = async (comment_id) => {
   await request.delete(`/comments/${comment_id}`);
+};
+
+export const patchVote = async (comment_id, inc_votes) => {
+  const { data } = await request.patch(`/comments/${comment_id}`, {
+    inc_votes,
+  });
+
+  return data.comment;
 };

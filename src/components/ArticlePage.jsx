@@ -43,17 +43,13 @@ class ArticlePage extends Component {
     const comment = { username: user, body: value };
 
     if (value.length > 0) {
-      api.postComment(article_id, comment).catch(console.log);
-
-      this.setState((currentState) => {
-        const userViewComment = {};
-        userViewComment.votes = 0;
-        userViewComment.author = user;
-        userViewComment.created_at = new Date().toISOString();
-        userViewComment.body = value;
-        userViewComment.comment_id = `optimisticComment${currentState.comments.length}`;
-        const updateComments = [userViewComment, ...currentState.comments];
-        return { comments: updateComments, newComment: '' };
+      api.postComment(article_id, comment).then((response) => {
+        this.setState((currentState) => {
+          return {
+            comments: [response, ...currentState.comments],
+            newComment: '',
+          };
+        });
       });
     }
   };
