@@ -43,8 +43,8 @@ export const deleteComment = async (comment_id) => {
   await request.delete(`/comments/${comment_id}`);
 };
 
-export const patchVote = async (comment_id, inc_votes) => {
-  const { data } = await request.patch(`/comments/${comment_id}`, {
+export const patchVote = async (id, votee, inc_votes) => {
+  const { data } = await request.patch(`/${votee}/${id}`, {
     inc_votes,
   });
 

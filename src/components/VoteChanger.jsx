@@ -46,7 +46,7 @@ class VoteChanger extends Component {
     this.setState((currentState) => {
       return { voteChange: currentState.voteChange + change };
     });
-    api.patchVote(this.props.comment_id, change);
+    api.patchVote(this.props.comment_id, 'comments', change).catch(console.log);
   };
 }
 
