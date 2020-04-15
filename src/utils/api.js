@@ -4,12 +4,17 @@ const request = axios.create({
   baseURL: 'https://nicks-nc-news.herokuapp.com/api',
 });
 
-export const getArticles = async (topic) => {
+export const getArticles = async (topic, sorting) => {
+  const { sort_by, order } = sorting;
   if (topic === 'all') {
-    const { data } = await request.get('/articles');
+    const { data } = await request.get('/articles', {
+      params: { sort_by, order },
+    });
     return data.articles;
   } else {
-    const { data } = await request.get('/articles', { params: { topic } });
+    const { data } = await request.get('/articles', {
+      params: { topic, sort_by, order },
+    });
     return data.articles;
   }
 };

@@ -25,16 +25,20 @@ class ArticlesList extends Component {
   }
 
   componentDidMount = () => {
-    api.getArticles(this.props.topic).then((articles) => {
+    api.getArticles(this.props.topic, this.props.sorting).then((articles) => {
       this.setState({ articles, isLoading: false });
     });
   };
 
   componentDidUpdate = (prevProps) => {
-    if (prevProps.topic !== this.props.topic) {
+    if (
+      prevProps.topic !== this.props.topic ||
+      prevProps.sorting.sort_by !== this.props.sorting.sort_by ||
+      prevProps.sorting.order !== this.props.sorting.order
+    ) {
       this.setState({ isLoading: true });
       api
-        .getArticles(this.props.topic)
+        .getArticles(this.props.topic, this.props.sorting)
         .then((articles) => {
           this.setState({ articles, isLoading: false });
         })
