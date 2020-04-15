@@ -29,3 +29,12 @@ export const getTopics = async () => {
   const { data } = await request.get('/topics');
   return data.topics;
 };
+
+export const postComment = async (article_id, comment) => {
+  const { status } = await request.post(
+    `/articles/${article_id}/comments`,
+    comment
+  );
+
+  return status;
+};

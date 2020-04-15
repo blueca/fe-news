@@ -8,11 +8,12 @@ class Nav extends Component {
   // state = { topics: [] };
 
   render() {
-    const { topic, handleChange } = this.props;
+    const { topic, handleChange, sorting } = this.props;
+
     return (
       <nav>
         <Topics topic={topic} />
-        <Sort handleChange={handleChange} />
+        <Sort handleChange={handleChange} sorting={sorting} />
       </nav>
     );
   }
