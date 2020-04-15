@@ -5,7 +5,7 @@ import ArticlesList from './ArticlesList';
 const ArticlesDisplay = ({ topic }) => {
   return (
     <div>
-      <Nav />
+      <Nav topic={topic} />
       <ArticlesList topic={topic} />
     </div>
   );

@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import * as api from '../utils/api';
+// import * as api from '../utils/api';
 
 import Topics from './Topics';
+import Sort from './Sort';
 
 class Nav extends Component {
-  state = { topics: [] };
+  // state = { topics: [] };
 
   render() {
+    const { topic } = this.props;
     return (
       <nav>
-        <Topics topics={this.state.topics} />
-        <p>sort</p>
+        <Topics topic={topic} />
+        <Sort />
       </nav>
     );
   }
 
-  componentDidMount = () => {
-    api.getTopics().then((topics) => {
-      this.setState({ topics });
-    });
-  };
+  // componentDidMount = () => {
+  // console.log('nav mounted');
+  // api.getTopics().then((topics) => {
+  //   this.setState({ topics });
+  // });
+  // };
 }
 
 export default Nav;
