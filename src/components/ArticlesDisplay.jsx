@@ -22,6 +22,8 @@ class ArticlesDisplay extends React.Component {
     const sorting = JSON.parse(sessionStorage.getItem('sorting'));
     if (sorting) {
       this.setState({ sorting });
+    } else {
+      sessionStorage.setItem('sorting', JSON.stringify(this.state.sorting));
     }
   };
 

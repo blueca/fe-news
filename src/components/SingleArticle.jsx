@@ -7,7 +7,6 @@ const SingleArticle = (props) => {
     author,
     created_at,
     body,
-    comment_count,
     topic,
     votes,
     article_id,

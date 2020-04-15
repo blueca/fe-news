@@ -4,7 +4,7 @@ class Sort extends Component {
   // state = { sorting: { sort_by: 'votes', order: 'desc' } };
 
   render() {
-    const { handleChange, sorting } = this.props;
+    const { handleChange } = this.props;
     // const { sort_by, order } = this.state.sorting;
     // console.log(sorting.sort_by, sorting.order);
 
@@ -12,12 +12,18 @@ class Sort extends Component {
       <form onChange={handleChange}>
         <label>
           Sort By:
-          <select name="sort_by" defaultValue={`${sorting.sort_by}`}>
+          <select
+            name="sort_by"
+            defaultValue={JSON.parse(sessionStorage.getItem('sorting')).sort_by}
+          >
             <option value="votes">Votes</option>
             <option value="created_at">Date</option>
             <option value="comment_count">Comments</option>
           </select>
-          <select name="order" defaultValue={sorting.order}>
+          <select
+            name="order"
+            defaultValue={JSON.parse(sessionStorage.getItem('sorting')).order}
+          >
             <option value="desc">Descending</option>
             <option value="asc">Ascending</option>
           </select>
@@ -28,10 +34,9 @@ class Sort extends Component {
 
   // componentDidMount = () => {
   //   const sorting = JSON.parse(sessionStorage.getItem('sorting'));
-  //   console.log('storageMount: ', sorting);
-  //   if (sorting) {
+  //   // if (sorting) {
   //     this.setState({ sorting });
-  //   }
+  //   // }
   // };
   // componentDidUpdate = (prevProps) => {
   //   if (
@@ -39,9 +44,9 @@ class Sort extends Component {
   //     prevProps.sorting.order !== this.props.sorting.order
   //   ) {
   //     // const sorting = JSON.parse(sessionStorage.getItem('sorting'));
-  //     if (this.props.sorting) {
-  //       this.setState({ sorting: this.props.sorting });
-  //     }
+  //     // if (this.props.sorting) {
+  //     this.setState({ sorting: this.props.sorting });
+  //     // }
   //   }
   // };
 }
