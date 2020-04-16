@@ -4,15 +4,31 @@ import SingleArticle from './SingleArticle';
 import ArticleComments from './ArticleComments';
 import * as api from '../utils/api';
 import NewComment from './NewComment';
+import Loading from './Loading';
+import ErrorPage from './ErrorPage';
 
 const StyledDiv = styled.div`
   padding: 0 2rem;
 `;
 
 class ArticlePage extends Component {
-  state = { article: {}, comments: [], newComment: '' };
+  state = {
+    article: {},
+    comments: [],
+    newComment: '',
+    isLoading: true,
+    error: null,
+  };
 
   render() {
+    if (this.state.error)
+      return (
+        <ErrorPage
+          status={this.state.error.status}
+          msg={this.state.error.msg}
+        />
+      );
+    if (this.state.isLoading) return <Loading />;
     return (
       <StyledDiv>
         <SingleArticle
@@ -37,7 +53,15 @@ class ArticlePage extends Component {
     api
       .getSingleArticle(this.props.article_id)
       .then(({ article, comments }) => {
-        this.setState({ article, comments });
+        this.setState({ article, comments, isLoading: false });
+      })
+      .catch((error) => {
+        this.setState({
+          error: {
+            msg: error.response.data.error,
+            status: error.response.status,
+          },
+        });
       });
   };
 

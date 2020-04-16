@@ -37,7 +37,7 @@ class ArticlesList extends Component {
     api
       .getArticles(this.props.topic, this.props.sorting)
       .then((articles) => {
-        this.setState({ articles, isLoading: false });
+        this.setState({ articles, isLoading: false, error: null });
       })
       .catch((error) => {
         this.setState({
@@ -59,7 +59,7 @@ class ArticlesList extends Component {
       api
         .getArticles(this.props.topic, this.props.sorting)
         .then((articles) => {
-          this.setState({ articles, isLoading: false });
+          this.setState({ articles, isLoading: false, error: null });
         })
         .catch((error) => {
           this.setState({
