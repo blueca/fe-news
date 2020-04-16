@@ -7,17 +7,17 @@ const Ul = styled.ul`
   padding: 0;
 `;
 
-const ArticleComments = (props) => {
+const ArticleComments = ({ comments, user, handleDelete }) => {
   return (
     <div>
       <Ul>
-        {props.comments.map((comment) => {
+        {comments.map((comment) => {
           return (
             <CommentCard
               comment={comment}
               key={comment.comment_id}
-              user={props.user}
-              handleDelete={props.handleDelete}
+              user={user}
+              handleDelete={handleDelete}
             />
           );
         })}

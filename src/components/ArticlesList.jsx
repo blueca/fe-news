@@ -6,7 +6,6 @@ import ArticleListCard from './ArticleListCard';
 import ErrorPage from './ErrorPage';
 
 const Ol = styled.ol`
-  list-style-type: upper-roman;
   padding-right: 2rem;
 `;
 
@@ -34,8 +33,10 @@ class ArticlesList extends Component {
   }
 
   componentDidMount = () => {
+    const { topic, sorting } = this.props;
+
     api
-      .getArticles(this.props.topic, this.props.sorting)
+      .getArticles(topic, sorting)
       .then((articles) => {
         this.setState({ articles, isLoading: false, error: null });
       })
@@ -50,22 +51,25 @@ class ArticlesList extends Component {
   };
 
   componentDidUpdate = (prevProps) => {
+    const { topic, sorting } = this.props;
+
     if (
-      prevProps.topic !== this.props.topic ||
-      prevProps.sorting.sort_by !== this.props.sorting.sort_by ||
-      prevProps.sorting.order !== this.props.sorting.order
+      prevProps.topic !== topic ||
+      prevProps.sorting.sort_by !== sorting.sort_by ||
+      prevProps.sorting.order !== sorting.order
     ) {
       this.setState({ isLoading: true });
       api
-        .getArticles(this.props.topic, this.props.sorting)
+        .getArticles(topic, sorting)
         .then((articles) => {
           this.setState({ articles, isLoading: false, error: null });
         })
         .catch((error) => {
+          const { response } = error;
           this.setState({
             error: {
-              msg: error.response.data.error,
-              status: error.response.status,
+              msg: response.data.error,
+              status: response.status,
             },
           });
         });

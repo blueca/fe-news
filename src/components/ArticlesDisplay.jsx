@@ -1,6 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import Nav from './Nav';
 import ArticlesList from './ArticlesList';
+
+const Section = styled.section`
+  background-color: royalblue;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+`;
 
 class ArticlesDisplay extends React.Component {
   state = {
@@ -11,10 +19,10 @@ class ArticlesDisplay extends React.Component {
     const { topic } = this.props;
     const { sorting } = this.state;
     return (
-      <section>
+      <Section>
         <Nav topic={topic} handleChange={this.handleChange} sorting={sorting} />
         <ArticlesList topic={topic} sorting={sorting} />
-      </section>
+      </Section>
     );
   }
 
@@ -28,14 +36,13 @@ class ArticlesDisplay extends React.Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
+    const { sorting } = this.state;
     if (
-      prevState.sorting.sort_by !== this.state.sorting.sort_by ||
-      prevState.sorting.order !== this.state.sorting.order
+      prevState.sorting.sort_by !== sorting.sort_by ||
+      prevState.sorting.order !== sorting.order
     ) {
       const sorting = JSON.parse(sessionStorage.getItem('sorting'));
       if (sorting) {
-        // console.log('storageUpdate: ', sorting);
-
         this.setState({ sorting });
       }
     }

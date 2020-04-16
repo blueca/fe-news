@@ -12,6 +12,7 @@ const Li = styled.li`
 
 const CommentDetails = styled.section`
   display: flex;
+  justify-content: space-between;
 `;
 
 const P = styled.p`
@@ -35,31 +36,27 @@ const CommentBody = styled.p`
   margin: 0.5rem 0 1rem 0;
 `;
 
-const CommentCard = (props) => {
+const Section = styled.section`
+  width: 100%;
+`;
+
+const CommentCard = ({ comment, user, handleDelete }) => {
+  const { votes, comment_id, author, created_at, body } = comment;
+
   return (
     <Li>
-      <VoteChanger
-        votes={props.comment.votes}
-        id={props.comment.comment_id}
-        votee="comments"
-      />
-      <section>
+      <VoteChanger votes={votes} id={comment_id} votee="comments" />
+      <Section>
         <CommentDetails>
-          {props.comment.author === props.user ? (
-            <UserP>{props.comment.author}</UserP>
-          ) : (
-            <P>{props.comment.author}</P>
-          )}
+          {author === user ? <UserP>{author}</UserP> : <P>{author}</P>}
 
-          <DateP>{props.comment.created_at}</DateP>
+          <DateP>{created_at}</DateP>
         </CommentDetails>
-        <CommentBody>{props.comment.body}</CommentBody>
-        {props.comment.author === props.user && (
-          <button onClick={() => props.handleDelete(props.comment.comment_id)}>
-            Delete
-          </button>
+        <CommentBody>{body}</CommentBody>
+        {author === user && (
+          <button onClick={() => handleDelete(comment_id)}>Delete</button>
         )}
-      </section>
+      </Section>
     </Li>
   );
 };

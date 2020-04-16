@@ -21,28 +21,22 @@ class ArticlePage extends Component {
   };
 
   render() {
-    if (this.state.error)
-      return (
-        <ErrorPage
-          status={this.state.error.status}
-          msg={this.state.error.msg}
-        />
-      );
-    if (this.state.isLoading) return <Loading />;
+    const { article, comments, newComment, isLoading, error } = this.state;
+    const { user } = this.props;
+
+    if (error) return <ErrorPage status={error.status} msg={error.msg} />;
+    if (isLoading) return <Loading />;
     return (
       <StyledDiv>
-        <SingleArticle
-          article={this.state.article}
-          // commentCount={this.state.comments.length}
-        />
+        <SingleArticle article={article} />
         <NewComment
           handlePost={this.handlePost}
           handleChange={this.handleChange}
-          newComment={this.state.newComment}
+          newComment={newComment}
         />
         <ArticleComments
-          comments={this.state.comments}
-          user={this.props.user}
+          comments={comments}
+          user={user}
           handleDelete={this.handleDelete}
         />
       </StyledDiv>
@@ -56,10 +50,11 @@ class ArticlePage extends Component {
         this.setState({ article, comments, isLoading: false });
       })
       .catch((error) => {
+        const { response } = error;
         this.setState({
           error: {
-            msg: error.response.data.error,
-            status: error.response.status,
+            msg: response.data.error,
+            status: response.status,
           },
         });
       });

@@ -23,6 +23,7 @@ class VoteChanger extends Component {
 
   render() {
     const { voteChange } = this.state;
+    const { votes } = this.props;
 
     return (
       <Voting>
@@ -39,7 +40,7 @@ class VoteChanger extends Component {
         >
           +
         </VoteButton>
-        {this.props.votes + this.state.voteChange}
+        {votes + voteChange}
         <VoteButton
           onClick={() => {
             if (voteChange === 0) {
@@ -58,10 +59,12 @@ class VoteChanger extends Component {
   }
 
   handleVote = (change) => {
+    const { id, votee } = this.props;
+
     this.setState((currentState) => {
       return { voteChange: currentState.voteChange + change };
     });
-    api.patchVote(this.props.id, this.props.votee, change).catch(console.log);
+    api.patchVote(id, votee, change).catch(console.log);
   };
 }
 

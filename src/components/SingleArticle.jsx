@@ -44,6 +44,7 @@ const SingleArticle = (props) => {
     article_id,
     comment_count,
   } = props.article;
+
   return (
     <Article>
       <VoteChanger votes={votes} id={article_id} votee="articles" />
