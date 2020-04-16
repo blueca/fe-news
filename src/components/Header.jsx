@@ -31,6 +31,7 @@ const P = styled.p`
   background-color: ${col.layer1};
   border-radius: 0 0 0.5rem 0.5rem;
   margin-right: 2rem;
+  box-shadow: 0 0 0.2rem black;
 `;
 
 const H1 = styled.h1`

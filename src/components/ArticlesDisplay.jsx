@@ -9,6 +9,7 @@ const Section = styled.section`
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.3rem;
+  box-shadow: 0 0 0.2rem black;
 `;
 
 class ArticlesDisplay extends React.Component {

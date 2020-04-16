@@ -9,6 +9,7 @@ const Li = styled.li`
   margin: 1rem 0;
   padding: 0.5rem;
   border-radius: 0.3rem;
+  box-shadow: 0 0 0.2rem black;
 `;
 
 const CommentDetails = styled.section`
@@ -23,8 +24,8 @@ const P = styled.p`
 `;
 
 const UserP = styled(P)`
-  background-color: rgb(61, 61, 226);
-  color: white;
+  background-color: #bb86fc;
+  color: #121212;
   border-radius: 0.3rem;
   padding: 0.2rem;
 `;

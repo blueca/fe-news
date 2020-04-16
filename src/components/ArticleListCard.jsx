@@ -11,6 +11,11 @@ const ArticleCard = styled.section`
   margin: 1rem 0;
   padding: 0.5rem;
   align-items: center;
+  box-shadow: 0 0 0.2rem black;
+
+  &:hover {
+    box-shadow: 0 0 0.2rem rgb(100, 100, 100);
+  }
 `;
 
 const StyledDiv = styled.div`

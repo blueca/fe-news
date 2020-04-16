@@ -29,6 +29,7 @@ const ArticleContent = styled.p`
   padding: 0.5rem;
   border-radius: 0.3rem;
   margin: 0.3rem 0;
+  box-shadow: 0 0 0.2rem black;
 `;
 
 const CommentP = styled.p`

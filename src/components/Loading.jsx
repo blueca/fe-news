@@ -7,12 +7,26 @@ const StyledDiv = styled.div`
   margin: 0.5rem;
   background-color: ${col.layer1};
   border-radius: 0.3rem;
+  box-shadow: 0 0 0.2rem black;
 `;
 
 const Loading = () => {
   return (
     <StyledDiv>
-      <p>Loading...</p>
+      <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </StyledDiv>
   );
 };

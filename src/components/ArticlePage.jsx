@@ -14,6 +14,7 @@ const StyledDiv = styled.div`
   background-color: ${col.layer1};
   border-radius: 0.3rem;
   color: rgb(240, 240, 240);
+  box-shadow: 0 0 0.2rem black;
 `;
 
 class ArticlePage extends Component {
