@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import VoteChanger from './VoteChanger';
+import { col } from '../styles/colours';
 
 const Article = styled.article`
   display: flex;
-  border-bottom: 2px dotted black;
+  border-bottom: 2px dotted ${col.layer4};
   margin-bottom: 0.2rem;
   width: 70%;
 `;
@@ -24,7 +25,7 @@ const P = styled.p`
 `;
 
 const ArticleContent = styled.p`
-  background-color: green;
+  background-color: ${col.layer2};
   padding: 0.5rem;
   border-radius: 0.3rem;
   margin: 0.3rem 0;

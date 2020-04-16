@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { col } from '../styles/colours';
 import VoteChanger from './VoteChanger';
 
 const Li = styled.li`
   display: flex;
-  background-color: green;
+  background-color: ${col.layer2};
   margin: 1rem 0;
   padding: 0.5rem;
   border-radius: 0.3rem;
@@ -22,7 +23,7 @@ const P = styled.p`
 `;
 
 const UserP = styled(P)`
-  background-color: blue;
+  background-color: rgb(61, 61, 226);
   color: white;
   border-radius: 0.3rem;
   padding: 0.2rem;

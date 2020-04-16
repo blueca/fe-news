@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { col } from '../styles/colours';
 import Nav from './Nav';
 import ArticlesList from './ArticlesList';
 
 const Section = styled.section`
-  background-color: royalblue;
+  background-color: ${col.layer1};
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.3rem;

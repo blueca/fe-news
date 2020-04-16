@@ -24,7 +24,9 @@ class ArticlesList extends Component {
         <Ol>
           {articles.map((article) => {
             return (
-              <ArticleListCard article={article} key={article.article_id} />
+              <li>
+                <ArticleListCard article={article} key={article.article_id} />
+              </li>
             );
           })}
         </Ol>

@@ -1,9 +1,10 @@
 html {
   font-family: 'Roboto', sans-serif;
+  overflow-y: scroll;
 }
 
 body {
   margin: 0;
-  background-color: cyan;
-  color: black;
+  background-color: #121212;
+  color: rgb(179, 179, 179);
 }

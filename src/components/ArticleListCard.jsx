@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import { col } from '../styles/colours';
 import styled from 'styled-components';
 import VoteChanger from './VoteChanger';
 
 const ArticleCard = styled.section`
   display: flex;
-  background-color: green;
+  background-color: ${col.layer2};
   border-radius: 0.3rem;
   margin: 1rem 0;
   padding: 0.5rem;
@@ -24,11 +25,11 @@ const ArticleCardDetails = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  color: black;
+  color: rgb(240, 240, 240);
   text-decoration: none;
 
   &:visited {
-    color: #999999;
+    color: rgb(179, 179, 179);
   }
 `;
 

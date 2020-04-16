@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SingleArticle from './SingleArticle';
 import ArticleComments from './ArticleComments';
 import * as api from '../utils/api';
+import { col } from '../styles/colours';
 import NewComment from './NewComment';
 import Loading from './Loading';
 import ErrorPage from './ErrorPage';
@@ -10,8 +11,9 @@ import ErrorPage from './ErrorPage';
 const StyledDiv = styled.div`
   padding: 0.5rem;
   margin: 0.5rem;
-  background-color: royalblue;
+  background-color: ${col.layer1};
   border-radius: 0.3rem;
+  color: rgb(240, 240, 240);
 `;
 
 class ArticlePage extends Component {

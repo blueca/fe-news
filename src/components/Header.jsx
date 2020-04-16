@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
+import { col } from '../styles/colours';
 
 const H = styled.header`
   display: flex;
@@ -10,16 +11,16 @@ const H = styled.header`
 `;
 
 const HeaderLink = styled(Link)`
-  color: black;
+  color: rgb(190, 190, 190);
   text-decoration: none;
   padding-left: 2rem;
 
   &:visited {
-    color: black;
+    color: rgb(190, 190, 190);
   }
 
   &:hover {
-    color: slategray;
+    color: rgb(220, 220, 220);
   }
 `;
 
@@ -27,7 +28,7 @@ const P = styled.p`
   align-self: flex-start;
   margin: 0 1rem;
   padding: 0.5rem;
-  background-color: green;
+  background-color: ${col.layer1};
   border-radius: 0 0 0.5rem 0.5rem;
   margin-right: 2rem;
 `;
