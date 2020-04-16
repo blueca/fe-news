@@ -5,6 +5,7 @@ import CommentCard from './CommentCard';
 const Ul = styled.ul`
   list-style-type: none;
   padding: 0;
+  width: 70%;
 `;
 
 const ArticleComments = ({ comments, user, handleDelete }) => {

@@ -8,7 +8,10 @@ import Loading from './Loading';
 import ErrorPage from './ErrorPage';
 
 const StyledDiv = styled.div`
-  padding: 0 2rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: royalblue;
+  border-radius: 0.3rem;
 `;
 
 class ArticlePage extends Component {

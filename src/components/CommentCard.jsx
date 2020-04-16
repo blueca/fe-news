@@ -4,7 +4,7 @@ import VoteChanger from './VoteChanger';
 
 const Li = styled.li`
   display: flex;
-  background-color: red;
+  background-color: green;
   margin: 1rem 0;
   padding: 0.5rem;
   border-radius: 0.3rem;

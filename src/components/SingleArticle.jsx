@@ -6,6 +6,7 @@ const Article = styled.article`
   display: flex;
   border-bottom: 2px dotted black;
   margin-bottom: 0.2rem;
+  width: 70%;
 `;
 
 const ArticleDetails = styled.div`
@@ -23,7 +24,7 @@ const P = styled.p`
 `;
 
 const ArticleContent = styled.p`
-  background-color: red;
+  background-color: green;
   padding: 0.5rem;
   border-radius: 0.3rem;
   margin: 0.3rem 0;
