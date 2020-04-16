@@ -1,20 +1,30 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Button = styled.button`
+  width: 5rem;
+`;
 
 const NewComment = ({ handlePost, handleChange, newComment }) => {
   return (
-    <form onSubmit={handlePost}>
+    <Form onSubmit={handlePost}>
       <label>
         <textarea
           name="newComment"
-          cols="50"
-          rows="10"
+          cols="70"
+          rows="6"
           onChange={handleChange}
           value={newComment}
           placeholder="Add new comment..."
         ></textarea>
-        <button>Post</button>
       </label>
-    </form>
+      <Button>Post</Button>
+    </Form>
   );
 };
 

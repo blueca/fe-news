@@ -6,7 +6,10 @@ import VoteChanger from './VoteChanger';
 const ArticleCard = styled.section`
   display: flex;
   background-color: green;
+  border-radius: 0.3rem;
   margin: 1rem 0;
+  padding: 0.5rem;
+  align-items: center;
 `;
 
 const StyledDiv = styled.div`

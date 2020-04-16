@@ -9,6 +9,7 @@ const Voting = styled.section`
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
+  height: 100%;
 `;
 
 const VoteButton = styled.button`

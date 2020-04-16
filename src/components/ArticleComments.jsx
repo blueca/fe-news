@@ -1,10 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import CommentCard from './CommentCard';
+
+const Ul = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
 
 const ArticleComments = (props) => {
   return (
     <div>
-      <ul>
+      <Ul>
         {props.comments.map((comment) => {
           return (
             <CommentCard
@@ -15,7 +21,7 @@ const ArticleComments = (props) => {
             />
           );
         })}
-      </ul>
+      </Ul>
     </div>
   );
 };
