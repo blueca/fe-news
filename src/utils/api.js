@@ -7,17 +7,12 @@ const request = axios.create({
 //limit of 100 until pagination is implemented
 export const getArticles = async (topic, sorting) => {
   const { sort_by, order } = sorting;
-  if (topic === 'all') {
-    const { data } = await request.get('/articles', {
-      params: { sort_by, order, limit: 100 },
-    });
-    return data.articles;
-  } else {
-    const { data } = await request.get('/articles', {
-      params: { topic, sort_by, order, limit: 100 },
-    });
-    return data.articles;
-  }
+  topic = topic === 'all' ? undefined : topic;
+  const { data } = await request.get('/articles', {
+    params: { topic, sort_by, order, limit: 100 },
+  });
+
+  return data.articles;
 };
 
 //limit of 100 until pagination is implemented
@@ -26,11 +21,13 @@ export const getSingleArticle = async (article_id) => {
   const comments = await request.get(
     `articles/${article_id}/comments?limit=100`
   );
+
   return { article: article.data.article, comments: comments.data.comments };
 };
 
 export const getTopics = async () => {
   const { data } = await request.get('/topics');
+
   return data.topics;
 };
 
@@ -57,5 +54,6 @@ export const patchVote = async (id, votee, inc_votes) => {
 
 export const getUser = async (username) => {
   const { data } = await request.get(`/users/${username}`);
+
   return data.user;
 };
