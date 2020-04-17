@@ -17,12 +17,14 @@ export const getArticles = async (topic, sorting) => {
 
 //limit of 100 until pagination is implemented
 export const getSingleArticle = async (article_id) => {
-  const article = await request.get(`articles/${article_id}`);
-  const comments = await request.get(
+  const fetchedArticle = await request.get(`articles/${article_id}`);
+  const fetchedComments = await request.get(
     `articles/${article_id}/comments?limit=100`
   );
+  const { article } = fetchedArticle.data;
+  const { comments } = fetchedComments.data;
 
-  return { article: article.data.article, comments: comments.data.comments };
+  return { article, comments };
 };
 
 export const getTopics = async () => {
