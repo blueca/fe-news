@@ -11,13 +11,9 @@ body {
 
 .lds-spinner {
   color: official;
-  display: inline-block;
-  position: relative;
   width: 80px;
   height: 80px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  margin: 0 auto;
 }
 .lds-spinner div {
   transform-origin: 40px 40px;

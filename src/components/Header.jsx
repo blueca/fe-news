@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 import { col } from '../styles/colours';
+import Loading from './Loading';
 
 const H = styled.header`
   display: flex;
@@ -65,7 +66,7 @@ const Img = styled.img`
   box-shadow: 0 0 0.2rem black;
 `;
 
-const Header = ({ user, avatar, handleLogin, handleLogout }) => {
+const Header = ({ user, avatar, handleLogin, handleLogout, isLoading }) => {
   return (
     <H>
       <HeaderLink to="/">
@@ -79,6 +80,7 @@ const Header = ({ user, avatar, handleLogin, handleLogout }) => {
             <span>User: {user}</span>
           </P2>
         )}
+        {isLoading && <Loading />}
         {user !== '' && <Img src={avatar} alt="user avatar" />}
       </Section>
     </H>
