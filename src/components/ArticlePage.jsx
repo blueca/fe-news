@@ -39,7 +39,7 @@ class ArticlePage extends Component {
     return (
       <StyledDiv>
         <SingleArticle article={article} />
-        <NewComment handlePost={this.handlePost} />
+        {user !== '' && <NewComment handlePost={this.handlePost} />}
         <ArticleComments
           comments={comments}
           user={user}
