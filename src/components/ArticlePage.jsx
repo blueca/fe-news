@@ -30,7 +30,12 @@ class ArticlePage extends Component {
     const { user } = this.props;
 
     if (error) return <ErrorPage status={error.status} msg={error.msg} />;
-    if (isLoading) return <Loading />;
+    if (isLoading)
+      return (
+        <StyledDiv>
+          <Loading />
+        </StyledDiv>
+      );
     return (
       <StyledDiv>
         <SingleArticle article={article} />
