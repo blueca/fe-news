@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from '@reach/router';
 import VoteChanger from './VoteChanger';
 import { col } from '../styles/colours';
 
@@ -36,6 +37,19 @@ const CommentP = styled.p`
   margin-bottom: 0.2rem;
 `;
 
+const StyledLink = styled(Link)`
+  color: rgb(240, 240, 240);
+  text-decoration: none;
+
+  &:visited {
+    color: rgb(179, 179, 179);
+  }
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
+`;
+
 const SingleArticle = (props) => {
   const {
     title,
@@ -54,7 +68,9 @@ const SingleArticle = (props) => {
       <section>
         <ArticleDetails>
           <H2>{title}</H2>
-          <P>({topic})</P>
+          <P>
+            (<StyledLink to={`/topics/${topic}`}>{topic}</StyledLink>)
+          </P>
         </ArticleDetails>
         <ArticleDetails>
           <P>submitted at {new Date(created_at).toLocaleDateString()}</P>

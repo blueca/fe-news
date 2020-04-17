@@ -36,6 +36,9 @@ const StyledLink = styled(Link)`
   &:visited {
     color: rgb(179, 179, 179);
   }
+  &:hover {
+    color: white;
+  }
 `;
 
 const ArticleTitle = styled.h2`
@@ -44,6 +47,14 @@ const ArticleTitle = styled.h2`
 
 const P = styled.p`
   margin: 0.2rem 0.4rem 0 0;
+`;
+
+const LinkBold = styled(StyledLink)`
+  font-weight: 700;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const ArticleListCard = ({ article }) => {
@@ -67,7 +78,10 @@ const ArticleListCard = ({ article }) => {
         <ArticleCardDetails>
           <P>Posted at {new Date(created_at).toLocaleDateString()} </P>
           <P> by {author} </P>
-          <P> to {topic}</P>
+          <P>
+            {' '}
+            to <LinkBold to={`/topics/${topic}`}>{topic}</LinkBold>
+          </P>
         </ArticleCardDetails>
         <P>{comment_count} comments</P>
       </StyledDiv>

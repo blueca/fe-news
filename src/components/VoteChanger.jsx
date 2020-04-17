@@ -18,6 +18,10 @@ const VoteButton = styled.div`
   border-left: 0.8rem solid transparent;
   border-right: 0.8rem solid transparent;
   margin: 0.4rem 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const UpVote = styled(VoteButton)`
