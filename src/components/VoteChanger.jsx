@@ -14,6 +14,10 @@ const Voting = styled.section`
 
 const VoteButton = styled.button`
   width: 2rem;
+  background-color: ${(props) => {
+    if (props.status === 'Up1') return 'orangered';
+    if (props.status === 'Down-1') return 'royalblue';
+  }};
 `;
 
 class VoteChanger extends Component {
@@ -37,6 +41,7 @@ class VoteChanger extends Component {
               this.handleVote(2);
             }
           }}
+          status={`Up${voteChange}`}
         >
           +
         </VoteButton>
@@ -51,6 +56,7 @@ class VoteChanger extends Component {
               this.handleVote(-2);
             }
           }}
+          status={`Down${voteChange}`}
         >
           -
         </VoteButton>
