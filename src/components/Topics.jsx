@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
+import styled from 'styled-components';
 import * as api from '../utils/api';
+import { col } from '../styles/colours';
+
+const Select = styled.select`
+  height: 1.5rem;
+  width: 10rem;
+  border-radius: 0.3rem;
+  background-color: ${col.layer2};
+  color: white;
+`;
 
 class Topics extends Component {
   state = { topics: [], selectedTopic: this.props.topic };
@@ -10,8 +20,8 @@ class Topics extends Component {
 
     return (
       <label>
-        View Topic:
-        <select onChange={this.handleChange} value={selectedTopic}>
+        View Topic{' '}
+        <Select onChange={this.handleChange} value={selectedTopic}>
           <option value="all">All</option>
           {topics.map(({ slug }) => {
             return (
@@ -20,7 +30,7 @@ class Topics extends Component {
               </option>
             );
           })}
-        </select>
+        </Select>
       </label>
     );
   }
