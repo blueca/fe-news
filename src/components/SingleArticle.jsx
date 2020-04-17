@@ -57,7 +57,7 @@ const SingleArticle = (props) => {
           <P>({topic})</P>
         </ArticleDetails>
         <ArticleDetails>
-          <P>submitted at {created_at}</P>
+          <P>submitted at {new Date(created_at).toLocaleDateString()}</P>
           <P>by {author}</P>
         </ArticleDetails>
         <ArticleContent>{body}</ArticleContent>

@@ -52,7 +52,7 @@ const CommentCard = ({ comment, user, handleDelete }) => {
         <CommentDetails>
           {author === user ? <UserP>{author}</UserP> : <P>{author}</P>}
 
-          <DateP>{created_at}</DateP>
+          <DateP>{new Date(created_at).toLocaleDateString()}</DateP>
         </CommentDetails>
         <CommentBody>{body}</CommentBody>
         {author === user && (
