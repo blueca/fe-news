@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
 const Loading = () => {
   return (
     <StyledDiv>
-      <div class="lds-spinner">
+      <div className="lds-spinner">
         <div></div>
         <div></div>
         <div></div>

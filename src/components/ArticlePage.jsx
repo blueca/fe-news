@@ -21,13 +21,12 @@ class ArticlePage extends Component {
   state = {
     article: {},
     comments: [],
-    newComment: '',
     isLoading: true,
     error: null,
   };
 
   render() {
-    const { article, comments, newComment, isLoading, error } = this.state;
+    const { article, comments, isLoading, error } = this.state;
     const { user } = this.props;
 
     if (error) return <ErrorPage status={error.status} msg={error.msg} />;
@@ -35,11 +34,7 @@ class ArticlePage extends Component {
     return (
       <StyledDiv>
         <SingleArticle article={article} />
-        <NewComment
-          handlePost={this.handlePost}
-          handleChange={this.handleChange}
-          newComment={newComment}
-        />
+        <NewComment handlePost={this.handlePost} />
         <ArticleComments
           comments={comments}
           user={user}
@@ -66,27 +61,17 @@ class ArticlePage extends Component {
       });
   };
 
-  handlePost = (event) => {
-    event.preventDefault();
-    const { value } = event.target.newComment;
+  handlePost = (body) => {
     const { user, article_id } = this.props;
-    const comment = { username: user, body: value };
+    const comment = { username: user, body };
 
-    if (value.length > 0) {
-      api.postComment(article_id, comment).then((response) => {
-        this.setState((currentState) => {
-          return {
-            comments: [response, ...currentState.comments],
-            newComment: '',
-          };
-        });
+    api.postComment(article_id, comment).then((response) => {
+      this.setState((currentState) => {
+        return {
+          comments: [response, ...currentState.comments],
+        };
       });
-    }
-  };
-
-  handleChange = (event) => {
-    const { value } = event.target;
-    this.setState({ newComment: value });
+    });
   };
 
   handleDelete = (comment_id) => {
