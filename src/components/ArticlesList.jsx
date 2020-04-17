@@ -14,6 +14,7 @@ class ArticlesList extends Component {
 
   render() {
     const { articles, isLoading, error } = this.state;
+    const { user } = this.props;
 
     if (error) return <ErrorPage status={error.status} msg={error.msg} />;
 
@@ -25,7 +26,7 @@ class ArticlesList extends Component {
           {articles.map((article) => {
             return (
               <li key={article.article_id}>
-                <ArticleListCard article={article} />
+                <ArticleListCard article={article} user={user} />
               </li>
             );
           })}

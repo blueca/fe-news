@@ -47,7 +47,7 @@ const CommentCard = ({ comment, user, handleDelete }) => {
 
   return (
     <Li>
-      <VoteChanger votes={votes} id={comment_id} votee="comments" />
+      <VoteChanger votes={votes} id={comment_id} votee="comments" user={user} />
       <Section>
         <CommentDetails>
           {author === user ? <UserP>{author}</UserP> : <P>{author}</P>}

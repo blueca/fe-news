@@ -38,7 +38,7 @@ class ArticlePage extends Component {
       );
     return (
       <StyledDiv>
-        <SingleArticle article={article} />
+        <SingleArticle article={article} user={user} />
         {user !== '' && (
           <NewComment
             user={user}

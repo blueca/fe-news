@@ -57,7 +57,7 @@ const LinkBold = styled(StyledLink)`
   }
 `;
 
-const ArticleListCard = ({ article }) => {
+const ArticleListCard = ({ article, user }) => {
   const {
     votes,
     article_id,
@@ -70,7 +70,7 @@ const ArticleListCard = ({ article }) => {
 
   return (
     <ArticleCard>
-      <VoteChanger votes={votes} id={article_id} votee="articles" />
+      <VoteChanger votes={votes} id={article_id} votee="articles" user={user} />
       <StyledDiv>
         <ArticleTitle>
           <StyledLink to={`/topics/${topic}/${article_id}`}>{title}</StyledLink>

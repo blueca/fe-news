@@ -79,12 +79,16 @@ class VoteChanger extends Component {
   }
 
   handleVote = (change) => {
-    const { id, votee } = this.props;
+    const { id, votee, user } = this.props;
 
-    this.setState((currentState) => {
-      return { voteChange: currentState.voteChange + change };
-    });
-    api.patchVote(id, votee, change);
+    if (user) {
+      this.setState((currentState) => {
+        return { voteChange: currentState.voteChange + change };
+      });
+      api.patchVote(id, votee, change);
+    } else {
+      alert('You need to be signed in to vote');
+    }
   };
 }
 

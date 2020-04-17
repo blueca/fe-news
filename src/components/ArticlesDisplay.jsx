@@ -18,12 +18,12 @@ class ArticlesDisplay extends React.Component {
   };
 
   render() {
-    const { topic } = this.props;
+    const { topic, user } = this.props;
     const { sorting } = this.state;
     return (
       <Section>
         <Nav topic={topic} handleChange={this.handleChange} sorting={sorting} />
-        <ArticlesList topic={topic} sorting={sorting} />
+        <ArticlesList topic={topic} sorting={sorting} user={user} />
       </Section>
     );
   }

@@ -50,7 +50,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const SingleArticle = (props) => {
+const SingleArticle = ({ article, user }) => {
   const {
     title,
     author,
@@ -60,11 +60,11 @@ const SingleArticle = (props) => {
     votes,
     article_id,
     comment_count,
-  } = props.article;
+  } = article;
 
   return (
     <Article>
-      <VoteChanger votes={votes} id={article_id} votee="articles" />
+      <VoteChanger votes={votes} id={article_id} votee="articles" user={user} />
       <section>
         <ArticleDetails>
           <H2>{title}</H2>
