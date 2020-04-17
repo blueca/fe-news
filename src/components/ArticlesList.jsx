@@ -20,7 +20,7 @@ class ArticlesList extends Component {
     if (isLoading) return <Loading />;
 
     return (
-      <article className="ArticlesList">
+      <article>
         <Ol>
           {articles.map((article) => {
             return (
