@@ -12,12 +12,26 @@ const Voting = styled.section`
   height: 100%;
 `;
 
-const VoteButton = styled.button`
-  width: 2rem;
-  background-color: ${(props) => {
-    if (props.status === 'Up1') return 'orangered';
-    if (props.status === 'Down-1') return 'royalblue';
-  }};
+const VoteButton = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 0.8rem solid transparent;
+  border-right: 0.8rem solid transparent;
+  margin: 0.4rem 0;
+`;
+
+const UpVote = styled(VoteButton)`
+  border-bottom: 0.8rem solid
+    ${(props) => {
+      return props.status === 'Up1' ? 'orangered' : 'white';
+    }};
+`;
+
+const DownVote = styled(VoteButton)`
+  border-top: 0.8rem solid
+    ${(props) => {
+      return props.status === 'Down-1' ? 'royalblue' : 'white';
+    }};
 `;
 
 class VoteChanger extends Component {
@@ -31,7 +45,7 @@ class VoteChanger extends Component {
 
     return (
       <Voting>
-        <VoteButton
+        <UpVote
           onClick={() => {
             if (voteChange === 0) {
               this.handleVote(1);
@@ -42,11 +56,9 @@ class VoteChanger extends Component {
             }
           }}
           status={`Up${voteChange}`}
-        >
-          +
-        </VoteButton>
+        ></UpVote>
         {votes + voteChange}
-        <VoteButton
+        <DownVote
           onClick={() => {
             if (voteChange === 0) {
               this.handleVote(-1);
@@ -57,9 +69,7 @@ class VoteChanger extends Component {
             }
           }}
           status={`Down${voteChange}`}
-        >
-          -
-        </VoteButton>
+        ></DownVote>
       </Voting>
     );
   }
