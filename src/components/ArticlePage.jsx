@@ -27,7 +27,7 @@ class ArticlePage extends Component {
 
   render() {
     const { article, comments, isLoading, error } = this.state;
-    const { user } = this.props;
+    const { user, article_id } = this.props;
 
     if (error) return <ErrorPage status={error.status} msg={error.msg} />;
     if (isLoading)
@@ -39,7 +39,13 @@ class ArticlePage extends Component {
     return (
       <StyledDiv>
         <SingleArticle article={article} />
-        {user !== '' && <NewComment handlePost={this.handlePost} />}
+        {user !== '' && (
+          <NewComment
+            user={user}
+            article_id={article_id}
+            handlePost={this.handlePost}
+          />
+        )}
         <ArticleComments
           comments={comments}
           user={user}
@@ -66,16 +72,11 @@ class ArticlePage extends Component {
       });
   };
 
-  handlePost = (body) => {
-    const { user, article_id } = this.props;
-    const comment = { username: user, body };
-
-    api.postComment(article_id, comment).then((response) => {
-      this.setState((currentState) => {
-        return {
-          comments: [response, ...currentState.comments],
-        };
-      });
+  handlePost = (comment) => {
+    this.setState((currentState) => {
+      return {
+        comments: [comment, ...currentState.comments],
+      };
     });
   };
 

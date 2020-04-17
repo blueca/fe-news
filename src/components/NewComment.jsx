@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { col } from '../styles/colours';
+import * as api from '../utils/api';
 
 const Form = styled.form`
   display: flex;
@@ -46,10 +47,12 @@ class NewComment extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { value } = event.target.newComment;
-    const { handlePost } = this.props;
+    const { handlePost, user, article_id } = this.props;
+    const comment = { username: user, body: value };
 
-    handlePost(value);
-    this.setState({ newComment: '' });
+    api.postComment(article_id, comment).then((response) => {
+      this.setState({ newComment: '' }, () => handlePost(response));
+    });
   };
 }
 
