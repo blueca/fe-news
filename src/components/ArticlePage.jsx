@@ -62,11 +62,11 @@ class ArticlePage extends Component {
         this.setState({ article, comments, isLoading: false });
       })
       .catch((error) => {
-        const { response } = error;
+        const { data, status } = error.response;
         this.setState({
           error: {
-            msg: response.data.error,
-            status: response.status,
+            msg: data.error,
+            status: status,
           },
         });
       });
@@ -88,7 +88,15 @@ class ArticlePage extends Component {
       return { comments: updatedComments };
     });
 
-    api.deleteComment(comment_id);
+    api.deleteComment(comment_id).catch((error) => {
+      const { data, status } = error.response;
+      this.setState({
+        error: {
+          msg: data.error,
+          status: status,
+        },
+      });
+    });
   };
 }
 

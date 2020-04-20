@@ -73,7 +73,7 @@ const SingleArticle = ({ article, user }) => {
           </P>
         </ArticleDetails>
         <ArticleDetails>
-          <P>submitted at {new Date(created_at).toLocaleDateString()}</P>
+          <P>submitted on {new Date(created_at).toLocaleDateString()}</P>
           <P>by {author}</P>
         </ArticleDetails>
         <ArticleContent>{body}</ArticleContent>

@@ -50,9 +50,20 @@ class NewComment extends React.Component {
     const { handlePost, user, article_id } = this.props;
     const comment = { username: user, body: value };
 
-    api.postComment(article_id, comment).then((response) => {
-      this.setState({ newComment: '' }, () => handlePost(response));
-    });
+    api
+      .postComment(article_id, comment)
+      .then((response) => {
+        this.setState({ newComment: '' }, () => handlePost(response));
+      })
+      .catch((error) => {
+        const { data, status } = error.response;
+        this.setState({
+          error: {
+            msg: data.error,
+            status: status,
+          },
+        });
+      });
   };
 }
 

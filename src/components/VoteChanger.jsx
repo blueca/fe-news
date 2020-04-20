@@ -85,7 +85,16 @@ class VoteChanger extends Component {
       this.setState((currentState) => {
         return { voteChange: currentState.voteChange + change };
       });
-      api.patchVote(id, votee, change);
+
+      api.patchVote(id, votee, change).catch((error) => {
+        const { data, status } = error.response;
+        this.setState({
+          error: {
+            msg: data.error,
+            status: status,
+          },
+        });
+      });
     } else {
       alert('You need to be signed in to vote');
     }

@@ -76,7 +76,7 @@ const ArticleListCard = ({ article, user }) => {
           <StyledLink to={`/topics/${topic}/${article_id}`}>{title}</StyledLink>
         </ArticleTitle>
         <ArticleCardDetails>
-          <P>Posted at {new Date(created_at).toLocaleDateString()} </P>
+          <P>submitted on {new Date(created_at).toLocaleDateString()} </P>
           <P> by {author} </P>
           <P>
             {' '}

@@ -36,9 +36,20 @@ class Topics extends Component {
   }
 
   componentDidMount = () => {
-    api.getTopics().then((topics) => {
-      this.setState({ topics });
-    });
+    api
+      .getTopics()
+      .then((topics) => {
+        this.setState({ topics });
+      })
+      .catch((error) => {
+        const { data, status } = error.response;
+        this.setState({
+          error: {
+            msg: data.error,
+            status: status,
+          },
+        });
+      });
   };
 
   handleChange = (event) => {

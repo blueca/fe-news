@@ -44,10 +44,11 @@ class ArticlesList extends Component {
         this.setState({ articles, isLoading: false, error: null });
       })
       .catch((error) => {
+        const { data, status } = error.response;
         this.setState({
           error: {
-            msg: error.response.data.error,
-            status: error.response.status,
+            msg: data.error,
+            status: status,
           },
         });
       });
@@ -68,11 +69,11 @@ class ArticlesList extends Component {
           this.setState({ articles, isLoading: false, error: null });
         })
         .catch((error) => {
-          const { response } = error;
+          const { data, status } = error.response;
           this.setState({
             error: {
-              msg: response.data.error,
-              status: response.status,
+              msg: data.error,
+              status: status,
             },
           });
         });
