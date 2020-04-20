@@ -7,6 +7,7 @@ import { col } from '../styles/colours';
 import NewComment from './NewComment';
 import Loading from './Loading';
 import ErrorPage from './ErrorPage';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const StyledDiv = styled.div`
   padding: 0.5rem;
@@ -42,21 +43,26 @@ class ArticlePage extends Component {
         </StyledDiv>
       );
     return (
-      <StyledDiv>
-        <SingleArticle article={article} user={user} />
-        {user !== '' && (
-          <NewComment
+      <HelmetProvider>
+        <Helmet>
+          <title>NC-News | {article.title}</title>
+        </Helmet>
+        <StyledDiv>
+          <SingleArticle article={article} user={user} />
+          {user !== '' && (
+            <NewComment
+              user={user}
+              article_id={article_id}
+              handlePost={this.handlePost}
+            />
+          )}
+          <ArticleComments
+            comments={comments}
             user={user}
-            article_id={article_id}
-            handlePost={this.handlePost}
+            handleDelete={this.handleDelete}
           />
-        )}
-        <ArticleComments
-          comments={comments}
-          user={user}
-          handleDelete={this.handleDelete}
-        />
-      </StyledDiv>
+        </StyledDiv>
+      </HelmetProvider>
     );
   }
 

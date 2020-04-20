@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { col } from '../styles/colours';
 import Nav from './Nav';
 import ArticlesList from './ArticlesList';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Section = styled.section`
   background-color: ${col.layer1};
@@ -26,10 +27,19 @@ class ArticlesDisplay extends React.Component {
     const { topic, user } = this.props;
     const { sorting } = this.state;
     return (
-      <Section>
-        <Nav topic={topic} handleChange={this.handleChange} sorting={sorting} />
-        <ArticlesList topic={topic} sorting={sorting} user={user} />
-      </Section>
+      <HelmetProvider>
+        <Section>
+          <Helmet>
+            <title>NC-News | {topic}</title>
+          </Helmet>
+          <Nav
+            topic={topic}
+            handleChange={this.handleChange}
+            sorting={sorting}
+          />
+          <ArticlesList topic={topic} sorting={sorting} user={user} />
+        </Section>
+      </HelmetProvider>
     );
   }
 
