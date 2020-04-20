@@ -24,8 +24,8 @@ class RandomArticle extends Component {
   componentDidMount = () => {
     api
       .getArticles('all', { sort_by: 'votes', order: 'desc' })
-      .then((articles) => {
-        this.setState({ articles: articles.length });
+      .then(({ total_count }) => {
+        this.setState({ articles: total_count });
       })
       .catch((error) => {
         const { data, status } = error.response;

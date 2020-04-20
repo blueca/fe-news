@@ -45,7 +45,7 @@ class ArticlesList extends Component {
           loader={<Loading key="loader" />}
           threshold={100}
         >
-          <Ol>
+          <Ol key="listParent">
             {articles.map((article) => {
               return (
                 <li key={article.article_id}>
@@ -119,16 +119,27 @@ class ArticlesList extends Component {
     const { topic, sorting } = this.props;
     const { nextPage } = this.state;
 
-    api.getArticles(topic, sorting, nextPage).then((moreArticles) => {
-      this.setState((currentState) => {
-        const { articles, nextPage } = currentState;
+    api
+      .getArticles(topic, sorting, nextPage)
+      .then((moreArticles) => {
+        this.setState((currentState) => {
+          const { articles, nextPage } = currentState;
 
-        return {
-          articles: articles.concat(moreArticles.articles),
-          nextPage: nextPage + 1,
-        };
+          return {
+            articles: articles.concat(moreArticles.articles),
+            nextPage: nextPage + 1,
+          };
+        });
+      })
+      .catch((error) => {
+        const { data, status } = error.response;
+        this.setState({
+          error: {
+            msg: data.error,
+            status: status,
+          },
+        });
       });
-    });
   };
 }
 
