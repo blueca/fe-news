@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import InfiniteScroll from 'react-infinite-scroller';
 import Loading from './Loading';
 import * as api from '../utils/api';
 import ArticleListCard from './ArticleListCard';
@@ -14,11 +15,21 @@ const Ol = styled.ol`
   }
 `;
 
+const StyledInfiniteScroll = styled(InfiniteScroll)`
+  padding-bottom: 1rem;
+`;
+
 class ArticlesList extends Component {
-  state = { articles: [], isLoading: true, error: null };
+  state = {
+    articles: [],
+    isLoading: true,
+    error: null,
+    countOfArticles: 0,
+    nextPage: 2,
+  };
 
   render() {
-    const { articles, isLoading, error } = this.state;
+    const { articles, isLoading, error, countOfArticles } = this.state;
     const { user } = this.props;
 
     if (error) return <ErrorPage status={error.status} msg={error.msg} />;
@@ -27,15 +38,23 @@ class ArticlesList extends Component {
 
     return (
       <article>
-        <Ol>
-          {articles.map((article) => {
-            return (
-              <li key={article.article_id}>
-                <ArticleListCard article={article} user={user} />
-              </li>
-            );
-          })}
-        </Ol>
+        <StyledInfiniteScroll
+          pageStart={0}
+          loadMore={this.fetchMoreArticles}
+          hasMore={articles.length !== countOfArticles}
+          loader={<Loading key="loader" />}
+          threshold={100}
+        >
+          <Ol>
+            {articles.map((article) => {
+              return (
+                <li key={article.article_id}>
+                  <ArticleListCard article={article} user={user} />
+                </li>
+              );
+            })}
+          </Ol>
+        </StyledInfiniteScroll>
       </article>
     );
   }
@@ -45,8 +64,13 @@ class ArticlesList extends Component {
 
     api
       .getArticles(topic, sorting)
-      .then((articles) => {
-        this.setState({ articles, isLoading: false, error: null });
+      .then(({ articles, total_count }) => {
+        this.setState({
+          articles,
+          isLoading: false,
+          error: null,
+          countOfArticles: total_count,
+        });
       })
       .catch((error) => {
         const { data, status } = error.response;
@@ -70,8 +94,14 @@ class ArticlesList extends Component {
       this.setState({ isLoading: true });
       api
         .getArticles(topic, sorting)
-        .then((articles) => {
-          this.setState({ articles, isLoading: false, error: null });
+        .then(({ articles, total_count }) => {
+          this.setState({
+            articles,
+            isLoading: false,
+            error: null,
+            countOfArticles: total_count,
+            nextPage: 2,
+          });
         })
         .catch((error) => {
           const { data, status } = error.response;
@@ -83,6 +113,22 @@ class ArticlesList extends Component {
           });
         });
     }
+  };
+
+  fetchMoreArticles = () => {
+    const { topic, sorting } = this.props;
+    const { nextPage } = this.state;
+
+    api.getArticles(topic, sorting, nextPage).then((moreArticles) => {
+      this.setState((currentState) => {
+        const { articles, nextPage } = currentState;
+
+        return {
+          articles: articles.concat(moreArticles.articles),
+          nextPage: nextPage + 1,
+        };
+      });
+    });
   };
 }
 

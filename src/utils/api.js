@@ -4,15 +4,14 @@ const request = axios.create({
   baseURL: 'https://nicks-nc-news.herokuapp.com/api',
 });
 
-//limit of 100 until pagination is implemented
-export const getArticles = async (topic, sorting) => {
+export const getArticles = async (topic, sorting, p) => {
   const { sort_by, order } = sorting;
   topic = topic === 'all' ? undefined : topic;
   const { data } = await request.get('/articles', {
-    params: { topic, sort_by, order, limit: 100 },
+    params: { topic, sort_by, order, p },
   });
 
-  return data.articles;
+  return data;
 };
 
 //limit of 100 until pagination is implemented
