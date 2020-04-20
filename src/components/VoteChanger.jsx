@@ -41,6 +41,7 @@ const DownVote = styled(VoteButton)`
 class VoteChanger extends Component {
   state = {
     voteChange: 0,
+    error: null,
   };
 
   render() {

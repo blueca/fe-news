@@ -5,7 +5,7 @@ import Loading from './Loading';
 import ErrorPage from './ErrorPage';
 
 class RandomArticle extends Component {
-  state = { articles: null, error: false };
+  state = { articles: null, error: null };
 
   render() {
     const { articles, error } = this.state;

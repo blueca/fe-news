@@ -3,6 +3,7 @@ import { navigate } from '@reach/router';
 import styled from 'styled-components';
 import * as api from '../utils/api';
 import { col } from '../styles/colours';
+import ErrorPage from './ErrorPage';
 
 const Select = styled.select`
   height: 1.5rem;
@@ -13,10 +14,12 @@ const Select = styled.select`
 `;
 
 class Topics extends Component {
-  state = { topics: [], selectedTopic: this.props.topic };
+  state = { topics: [], selectedTopic: this.props.topic, error: null };
 
   render() {
-    const { selectedTopic, topics } = this.state;
+    const { selectedTopic, topics, error } = this.state;
+
+    if (error) return <ErrorPage status={error.status} msg={error.msg} />;
 
     return (
       <label>

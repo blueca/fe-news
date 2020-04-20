@@ -5,7 +5,7 @@ import * as api from '../utils/api';
 import { navigate } from '@reach/router';
 
 class RandomTopic extends Component {
-  state = { topics: [], error: false };
+  state = { topics: [], error: null };
 
   render() {
     const { topics, error } = this.state;

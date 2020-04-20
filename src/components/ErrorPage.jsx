@@ -26,6 +26,10 @@ const ErrorCard = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)`
+  color: rgb(240, 240, 240);
+`;
+
 const ErrorPage = ({ status, msg }) => {
   return (
     <ErrorCard>
@@ -33,12 +37,12 @@ const ErrorPage = ({ status, msg }) => {
         <h2>Error!</h2>
         <p>{status || 500}</p>
         <p>{msg || 'Server Error'}</p>
-        <p>Get me out of here: </p>
+        <h3>Get me out of here: </h3>
         <p>
-          <Link to="/topics/random">Random topic</Link>
+          <StyledLink to="/topics/random">Random topic</StyledLink>
         </p>
         <p>
-          <Link to="/topics/all/random">Random article</Link>
+          <StyledLink to="/topics/all/random">Random article</StyledLink>
         </p>
       </StyledDiv>
     </ErrorCard>

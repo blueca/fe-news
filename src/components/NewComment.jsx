@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { col } from '../styles/colours';
 import * as api from '../utils/api';
+import ErrorPage from './ErrorPage';
 
 const Form = styled.form`
   display: flex;
@@ -24,9 +25,13 @@ const TextArea = styled.textarea`
 `;
 
 class NewComment extends React.Component {
-  state = { newComment: '' };
+  state = { newComment: '', error: null };
 
   render() {
+    const { error, newComment } = this.state;
+
+    if (error) return <ErrorPage status={error.status} msg={error.msg} />;
+
     return (
       <Form onSubmit={this.handleSubmit}>
         <label>
@@ -35,7 +40,7 @@ class NewComment extends React.Component {
             cols="70"
             rows="6"
             onChange={this.handleChange}
-            value={this.state.newComment}
+            value={newComment}
             required
             placeholder="Add new comment..."
           ></TextArea>
