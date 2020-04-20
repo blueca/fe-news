@@ -10,6 +10,11 @@ const Section = styled.section`
   padding: 0.5rem;
   border-radius: 0.3rem;
   box-shadow: 0 0 0.2rem black;
+
+  @media (max-width: 768px) {
+    padding: 0.2rem;
+    margin: 0.5rem 0.2rem;
+  }
 `;
 
 class ArticlesDisplay extends React.Component {

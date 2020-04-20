@@ -9,6 +9,10 @@ const Article = styled.article`
   border-bottom: 2px dotted ${col.layer4};
   margin-bottom: 0.2rem;
   width: 70%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ArticleDetails = styled.div`
@@ -18,6 +22,10 @@ const ArticleDetails = styled.div`
 
 const H2 = styled.h2`
   margin: 0 1.5rem 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const P = styled.p`

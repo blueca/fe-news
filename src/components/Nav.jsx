@@ -7,6 +7,11 @@ const Controls = styled.nav`
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+  }
 `;
 
 const Nav = ({ topic, handleChange, sorting }) => {

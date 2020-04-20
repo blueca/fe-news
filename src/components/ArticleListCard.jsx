@@ -43,6 +43,10 @@ const StyledLink = styled(Link)`
 
 const ArticleTitle = styled.h2`
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const P = styled.p`

@@ -10,11 +10,17 @@ const Form = styled.form`
 
 const Button = styled.button`
   width: 5rem;
+  border-radius: 0.3rem;
 `;
 
 const TextArea = styled.textarea`
   background-color: ${col.layer2};
   color: white;
+  border-radius: 0.3rem;
+
+  @media (max-width: 768px) {
+    width: 98%;
+  }
 `;
 
 class NewComment extends React.Component {

@@ -6,6 +6,10 @@ const Ul = styled.ul`
   list-style-type: none;
   padding: 0;
   width: 70%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ArticleComments = ({ comments, user, handleDelete }) => {

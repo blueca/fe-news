@@ -15,6 +15,11 @@ const StyledDiv = styled.div`
   border-radius: 0.3rem;
   color: rgb(240, 240, 240);
   box-shadow: 0 0 0.2rem black;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 0.2rem;
+    margin: 0.5rem 0.2rem;
+  }
 `;
 
 class ArticlePage extends Component {

@@ -7,6 +7,11 @@ import ErrorPage from './ErrorPage';
 
 const Ol = styled.ol`
   padding-right: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0rem;
+    list-style-type: none;
+  }
 `;
 
 class ArticlesList extends Component {
