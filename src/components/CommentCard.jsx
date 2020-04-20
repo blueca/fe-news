@@ -42,6 +42,20 @@ const Section = styled.section`
   width: 100%;
 `;
 
+const Button = styled.button`
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: rgb(179, 179, 179);
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: rgb(225, 225, 225);
+  }
+`;
+
 const CommentCard = ({ comment, user, handleDelete }) => {
   const { votes, comment_id, author, created_at, body } = comment;
 
@@ -56,7 +70,7 @@ const CommentCard = ({ comment, user, handleDelete }) => {
         </CommentDetails>
         <CommentBody>{body}</CommentBody>
         {author === user && (
-          <button onClick={() => handleDelete(comment_id)}>Delete</button>
+          <Button onClick={() => handleDelete(comment_id)}>Delete</Button>
         )}
       </Section>
     </Li>
