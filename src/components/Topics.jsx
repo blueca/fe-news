@@ -25,7 +25,7 @@ class Topics extends Component {
       <label>
         View Topic{' '}
         <Select onChange={this.handleChange} value={selectedTopic}>
-          <option value="all">All</option>
+          <option value="all">all</option>
           {topics.map(({ slug }) => {
             return (
               <option value={slug.toLowerCase()} key={slug}>
