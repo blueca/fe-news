@@ -25,7 +25,7 @@ class ArticlesDisplay extends React.Component {
   render() {
     const { topic, user } = this.props;
     const { sorting } = this.state;
-    document.title = `NC-News | ${topic}`;
+    document.title = `News-AG | ${topic}`;
 
     return (
       <Section>

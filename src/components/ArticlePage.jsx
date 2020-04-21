@@ -33,7 +33,7 @@ class ArticlePage extends Component {
   render() {
     const { article, comments, isLoading, error } = this.state;
     const { user, article_id } = this.props;
-    document.title = `NC-News | ${article.title || ''}`;
+    document.title = `News-AG | ${article.title || ''}`;
 
     if (error) return <ErrorPage status={error.status} msg={error.msg} />;
     if (isLoading)
