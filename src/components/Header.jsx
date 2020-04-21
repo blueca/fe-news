@@ -70,7 +70,7 @@ const Header = ({ user, avatar, handleLogin, handleLogout, isLoading }) => {
   return (
     <H>
       <HeaderLink to="/">
-        <H1>NC-NEWS</H1>
+        <H1>NEWS-AG</H1>
       </HeaderLink>
       <Section>
         {user === '' ? (
